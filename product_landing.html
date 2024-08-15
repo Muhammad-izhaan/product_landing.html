@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        header {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 600px; 
+            height: 400px; 
+            margin: 20px auto;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .image-details {
+            position: absolute;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            width: 100%;
+            padding: 10px;
+            display: none;
+            text-align: center;
+        }
+
+        .slider-container:hover .image-details {
+            display: block;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .product-info {
+            text-align: center;
+            margin: 40px 20px;
+        }
+
+        .product-info h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .product-info p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .product-info .price {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .size-selection {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .size-circle {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: inline-block;
+            margin: 0 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+
+        .size-circle.selected {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .reviews {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        .review-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .review-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .review-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .review-item h4 {
+            margin: 0;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .review-item p {
+            margin: 5px 0 0;
+            font-size: 1em;
+            color: #777;
+        }
+
+        .buy-now {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            font-size: 1.2em;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .buy-now:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Product Landing Page</h1>
+</header>
+
+<div class="slider-container">
+    <div class="slider">
+        <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_450,h_450/global/396463/21/sv01/fnd/IND/fmt/png/Palermo-Unisex-Sneakers" alt="Product 1">
+        <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_450,h_450/global/398525/01/sv01/fnd/IND/fmt/png/Palermo-Players-Lane-Unisex-Sneakers" alt="Product 2">
+        <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_450,h_450/global/396841/01/sv01/fnd/IND/fmt/png/Palermo-Vintage-Unisex-Sneakers" alt="Product 3">
+    </div>
+    <div class="image-details">
+        <p>This is a premium sneaker designed for comfort and style.</p>
+    </div>
+    <button class="prev" onclick="prevSlide()">&#10094;</button>
+    <button class="next" onclick="nextSlide()">&#10095;</button>
+</div>
+
+<div class="size-selection">
+    <span class="size-circle" onclick="selectSize(this)">S</span>
+    <span class="size-circle" onclick="selectSize(this)">M</span>
+    <span class="size-circle" onclick="selectSize(this)">L</span>
+    <span class="size-circle" onclick="selectSize(this)">XL</span>
+</div>
+
+<div class="product-info">
+    <h2>UltraBoost 2024 Shoes</h2>
+    <p>The UltraBoost 2024 shoes are designed for ultimate comfort and performance. With a sleek design, responsive cushioning, and breathable materials, these shoes are perfect for both casual wear and intense workouts.</p>
+    <p class="price">Price: ₹5,499</p>
+    <button class="buy-now">Buy Now</button>
+</div>
+
+<div class="reviews">
+    <div class="review-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQADjfoADAlJPrsl_hiiOMeE-FBor-i6hEAVg&s" alt="User Izhaan1">
+        <div>
+            <h4>Izhaan1</h4>
+            <p>Absolutely love these shoes! They are so comfortable and stylish.</p>
+        </div>
+    </div>
+    <div class="review-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQADjfoADAlJPrsl_hiiOMeE-FBor-i6hEAVg&s" alt="User Izhaan2">
+        <div>
+            <h4>Izhaan2</h4>
+            <p>The cushioning is amazing, perfect for running. Highly recommend!</p>
+        </div>
+    </div>
+    <div class="review-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQADjfoADAlJPrsl_hiiOMeE-FBor-i6hEAVg&s" alt="User Izhaan3">
+        <div>
+            <h4>Izhaan3</h4>
+            <p>Great shoes for everyday wear. They go with everything!</p>
+        </div>
+    </div>
+    <div class="review-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQADjfoADAlJPrsl_hiiOMeE-FBor-i6hEAVg&s" alt="User Izhaan4">
+        <div>
+            <h4>Izhaan4</h4>
+            <p>Very comfortable and durable. My go-to shoes now!</p>
+        </div>
+    </div>
+    <div class="review-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQADjfoADAlJPrsl_hiiOMeE-FBor-i6hEAVg&s" alt="User Izhaan5">
+        <div>
+            <h4>Izhaan5</h4>
+            <p>Love the design and how lightweight they are.</p>
+        </div>
+    </div>
+    <div class="review-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQADjfoADAlJPrsl_hiiOMeE-FBor-i6hEAVg&s" alt="User Izhaan6">
+        <div>
+            <h4>Izhaan6</h4>
+            <p>These shoes are perfect for long walks. So comfortable!</p>
+        </div>
+    </div>
+    <div class="review-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQADjfoADAlJPrsl_hiiOMeE-FBor-i6hEAVg&s" alt="User Izhaan7">
+        <div>
+            <h4>Izhaan7</h4>
+            <p>The quality is top-notch. Worth every penny!</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        const slider = document.querySelector('.slider');
+        const totalSlides = document.querySelectorAll('.slider img').length;
+        if (index >= totalSlides) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = totalSlides - 1;
+        } else {
+            currentSlide = index;
+        }
+        slider.style.transform = `translateX(${-currentSlide * 100}%)`;
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    function selectSize(element) {
+        const circles = document.querySelectorAll('.size-circle');
+        circles.forEach(circle => {
+            circle.classList.remove('selected');
+        });
+        element.classList.add('selected');
+    }
+
+    // Initialize first slide
+    showSlide(currentSlide);
+</script>
+
+</body>
+</html>
